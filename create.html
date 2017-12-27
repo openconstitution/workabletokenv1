@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Upscale Pay Create new Work- Trust strangers in trustless manner.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/interface-icons.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+    </head>
+    <body data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+
+
+		<div class="nav-container">
+		    <nav>
+		        <div class="nav-bar" data-fixed-at="700">
+		            <div class="nav-module logo-module left">
+		                <a href="index.html"><img alt="logo" class="logo logo-dark" src="img/logo-pay.png"> <img alt="logo" class="logo logo-light" src="img/logo-light.png"></a>
+		            </div>
+		            <div class="nav-module menu-module left">
+		                <ul class="menu">
+		                    <li>
+		                        <a href="#">About</a>
+		                    </li>
+		                    <li>
+		                        <a href="#">Create work&nbsp;</a>
+
+		                    </li>
+		                    <li>
+		                        <a href="/browse.html">browse work&nbsp;</a>
+
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+		        <div class="nav-mobile-toggle visible-sm visible-xs">
+		            <i class="icon-Align-JustifyAll icon icon--sm"></i>
+		        </div>
+		    </nav>
+
+
+<div class="container" align='center'>
+
+  <div class="notification col-sm-3 pos-bottom pos-right" data-animation="from-bottom" data-autoshow="2000">
+  <div id="noProviderWarningDiv" hidden='true'>
+    <div class="alert alert-warning" style='display:inline-block; margin-top:5rem'>
+      <strong>Alert! You do not have a web3 provider.</strong><br>
+      Getting Metamask or setting up <a href="wallet.metamask.io">Metamascara</a> is the quickest way to fix this.<br>
+      <a href="https://metamask.io/"><img src="resources/download-metamask.png" style="width:30rem"></a><br>
+      You can also use Mist or Parity. Refresh this page when you have a web3 provider.
+    </div>
+  </div>
+  <a class="notification-close">Shut It Down</a>
+      </div>
+
+      <div class="notification col-sm-3 pos-bottom pos-right" data-animation="from-bottom" data-autoshow="2000">
+  <div id="ropstenWarning" hidden='true' align='center'>
+    <div class="alert alert-warning" style='display:inline-block;'>
+      <p><strong>You are currently operating on the Ropsten testnet.</strong></p>
+      <p>To create Burnable Payments with real ether, change your Metamask network to the "Main" Ethereum network, and refresh.</p>
+    </div>
+  </div>
+  <a class="notification-close">Shut It Down</a>
+        </div>
+
+   <div class="notification col-sm-3 pos-bottom pos-right" data-animation="from-bottom" data-autoshow="2000">
+  <div id="web3LockedWarning" hidden='true'>
+    <div class="alert alert-warning" style='display:inline-block;' align='center'>
+      <p><strong>No Ethereum account found.</strong></p>
+      <p>You are currently unable to initiate any commands. Make sure Metamask is unlocked and refresh.</p>
+    </div>
+  </div>
+  <a class="notification-close">Shut It Down</a>
+          </div>
+
+
+  <div id="web3Div" hidden='true'>
+    <br>
+    <p style="font-size:1.8rem">If this is your first WP, please read <a href="creatingbops.html">Creating effective WPs</a>.</p>
+
+    <h1 class="col-sm-12 text-center">Create Work</h1>
+    <div class="col-md-12">
+    <form id='NewBOPForm'>
+    <div class="row">
+    <div class="col-sm-6">
+      <input type="text" id='payerInput' name='payerInput' type='text' placeholder='Double-click to fetch from Metamask/web3' size='44' ondblclick="populatePayerInputFromMetamask()"></br> </div>
+
+    <div class="col-sm-6">
+        <p>
+
+       <input type="text" id='titleInput' name='titleInput' placeholder="Define your work title" size=70 oninput="updateLengthChecker()"><br>
+    </div>
+
+
+      <div id="lengthCheckerOutput"></div>
+      <div class="col-sm-6">
+      <br><textarea id='initialStatementInput' placeholder="Define your work requirements, please be specfic , you can add link here of some document." name='initialStatementInput' cols='80' rows='10'></textarea><br></div>
+      <div class="col-sm-6" style="
+                                margin-bottom: 35px;
+                                margin-top: 35px;
+                            ">
+      <input id = 'paymentAmountInput' name='paymentAmountInput' placeholder="How much do you want to pay for this work in ETH" type='text' size='7'><br></div>
+      <div class="col-sm-6" style="
+                                                            margin-bottom: 35px;
+
+                                                        "><input id = 'serviceDepositInput' name='serviceDepositInput' placeholder="Initial service deposit for creating the work" type='text' size='7'><br></div>
+
+      <div class="col-sm-6"><input type='text' id='autoreleaseTimerInput' placeholder="Autorelease timer (# Days only)" name='autoreleaseTimerInput'><br></div>
+      <div class="col-sm-12"><input type='button' class="btn btn--lg btn--primary mb--1" onclick='newBOPFromForm()' value='Create WP'></div>
+      </div>
+    </form>
+    </div>
+
+    <div id='outputDiv'></div>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Transactions</h3>
+      </div>
+      <div id="createResultList">
+        <div class="well">
+          <div v-for="createResult in createResults">
+            <create-result-row :result="createResult"></create-result-row><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+</body>
+
+<footer class="footer-2 text-center-xs bg--white">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-sm-8">
+		                <ul class="footer__navigation">
+		                    <li>
+		                        <a href="#">About</a>
+		                    </li>
+		                    <li>
+		                        <a href="#">Terms</a>
+		                    </li>
+		                    <li>
+		                        <a href="#">Careers</a>
+		                    </li>
+		                    <li>
+		                        <a href="#">Contact</a>
+		                    </li>
+		                </ul>
+		            </div>
+		            <div class="col-sm-4 text-right text-center-xs">
+		                <ul class="social-list">
+		                    <li>
+		                        <a href="#"><i class="socicon-twitter"></i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"><i class="socicon-dribbble"></i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"><i class="socicon-vimeo"></i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"><i class="socicon-instagram"></i></a>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+		        <div class="row">
+		            <div class="col-sm-12">
+		                <a class="type--underline" href="#">hello@upscalepayments.com</a>
+		            </div>
+		        </div>
+		        <div class="row">
+		            <div class="col-sm-12">
+		                <div class="footer__lower">
+		                    <span class="type--fine-print">© Copyright
+		                    <span class="update-year">2017 Upscale</span>&nbsp;- All
+		                    Rights Reserved</span>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</footer>
+		</div>
+
+
+  <script src="js/jquery-2.1.4.min.js"></script>
+          <script src="js/scrollreveal.min.js"></script>
+          <script src="js/parallax.js"></script>
+          <script src="js/scripts.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://wallet.metamask.io/metamascara.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/web3@1.0.0-beta.26/src/index.min.js"></script>
+            <script src="https://unpkg.com/vue"></script>
+              <script src="libs/web3.min.js"></script>
+              <script src="script/components.js"></script>
+              <script src="script/utils.js"></script>
+              <script src="script/contractInfo.js"></script>
+              <script src="script/create.js"></script>
+
+       </body>
+
+
+
+          </html>
