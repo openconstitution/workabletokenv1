@@ -12,14 +12,14 @@ function markBOPVerified(flag) {
 
 function verifyAddressIsBOP() {
   markBOPVerified(false);
-  window.BOPFactory.contractInstance.getBOPCount(function(err, res) {
+  window.BOPFactory.contractInstance.getWOPCount(function(err, res) {
     if (err) {
         console.log("Error calling WP method: " + err.message);
     }
     else {
       var numBOPs = Number(res);
       for (var i = 0; i < numBOPs; i++) {
-        BOPFactory.contractInstance.BOPs(i, function(err, res) {
+        BOPFactory.contractInstance.WOPs(i, function(err, res) {
           if (err) {
               console.log("Error calling WP method: " + err.message);
           }
